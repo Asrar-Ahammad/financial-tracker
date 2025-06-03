@@ -955,9 +955,9 @@ const AuthPage = () => {
                         {isLogin ? 'Sign Up' : 'Login'}
                     </button>
                 </p>
-                <p className="mt-4 text-center text-red-500 text-sm">
+                {/* <p className="mt-4 text-center text-red-500 text-sm">
                     **Security Warning:** This is a client-side only authentication for demo purposes and is highly insecure for real applications.
-                </p>
+                </p> */}
             </div>
         </div>
     );
