@@ -1,3 +1,4 @@
+import { Moon, Sun } from 'lucide-react';
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, LineChart, Line } from 'recharts';
 
@@ -561,19 +562,7 @@ const ExportModal = ({ transactions, currency, onClose }) => {
                         onClick={() => { exportToCsv(transactions, 'transactions.csv', currency); onClose(); }}
                         className="w-full px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 transform hover:scale-105"
                     >
-                        Export as CSV
-                    </button>
-                    <button
-                        onClick={() => { exportToExcel(transactions, 'transactions.xlsx'); onClose(); }}
-                        className="w-full px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 transform hover:scale-105"
-                    >
-                        Export as Excel
-                    </button>
-                    <button
-                        onClick={() => { exportToPdf(transactions, 'transactions.pdf', currency); onClose(); }}
-                        className="w-full px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 transform hover:scale-105"
-                    >
-                        Export as PDF
+                        Confirm
                     </button>
                 </div>
             </div>
@@ -1170,13 +1159,13 @@ const App = () => {
                 <div className={`min-h-screen font-sans ${settings.isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-800'}`}>
                     {isAuthenticated ? (
                         <>
-                            <header className="bg-white dark:bg-gray-800 p-4 shadow-lg mb-6">
+                            <header className="bg-white dark:bg-gray-800 p-4 shadow-lg mb-6 relative">
                                 <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
                                     <h1 className="text-3xl font-extrabold text-indigo-700 dark:text-indigo-400 mb-4 sm:mb-0">FinTrack</h1>
                                     <nav className="flex flex-wrap justify-center sm:justify-start space-x-2 sm:space-x-4">
                                         <button
                                             onClick={() => setSelectedTab('overview')}
-                                            className={`px-4 py-2 rounded-lg font-medium transition duration-300 ${
+                                            className={`px-4 py-2 rounded-lg font-medium transition duration-300 cursor-pointer ${
                                                 selectedTab === 'overview'
                                                     ? 'bg-indigo-600 text-white shadow-md dark:bg-indigo-700'
                                                     : 'text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700'
@@ -1186,7 +1175,7 @@ const App = () => {
                                         </button>
                                         <button
                                             onClick={() => setSelectedTab('transactions')}
-                                            className={`px-4 py-2 rounded-lg font-medium transition duration-300 ${
+                                            className={`px-4 py-2 rounded-lg font-medium transition duration-300 cursor-pointer ${
                                                 selectedTab === 'transactions'
                                                     ? 'bg-indigo-600 text-white shadow-md dark:bg-indigo-700'
                                                     : 'text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700'
@@ -1196,7 +1185,7 @@ const App = () => {
                                         </button>
                                         <button
                                             onClick={() => setSelectedTab('budget')}
-                                            className={`px-4 py-2 rounded-lg font-medium transition duration-300 ${
+                                            className={`px-4 py-2 rounded-lg font-medium transition duration-300 cursor-pointer ${
                                                 selectedTab === 'budget'
                                                     ? 'bg-indigo-600 text-white shadow-md dark:bg-indigo-700'
                                                     : 'text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700'
@@ -1206,7 +1195,7 @@ const App = () => {
                                         </button>
                                         <button
                                             onClick={() => setSelectedTab('settings')}
-                                            className={`px-4 py-2 rounded-lg font-medium transition duration-300 ${
+                                            className={`px-4 py-2 rounded-lg font-medium transition duration-300 cursor-pointer ${
                                                 selectedTab === 'settings'
                                                     ? 'bg-indigo-600 text-white shadow-md dark:bg-indigo-700'
                                                     : 'text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700'
@@ -1216,21 +1205,17 @@ const App = () => {
                                         </button>
                                         <button
                                             onClick={toggleDarkMode}
-                                            className="p-2 rounded-lg font-medium transition duration-300 bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 flex items-center justify-center"
+                                            className="p-2 rounded-lg cursor-pointer font-medium transition duration-300 bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 flex items-center justify-center"
                                         >
                                             {settings.isDarkMode ? (
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                                                    <path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.106a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.06l1.591-1.59ZM21.75 12h-2.25a.75.75 0 0 0 0 1.5h2.25a.75.75 0 0 0 0-1.5ZM17.154 18.154a.75.75 0 0 0 1.06-1.06l-1.59-1.59a.75.75 0 0 0-1.06 1.06l1.59 1.59ZM12 18.75a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0v-2.25a.75.75 0 0 1 .75-.75ZM5.106 18.894a.75.75 0 1 0 1.06-1.06l-1.59-1.59a.75.75 0 0 0-1.06 1.06l1.59 1.59ZM2.25 12h2.25a.75.75 0 0 0 0-1.5H2.25a.75.75 0 0 0 0 1.5ZM6.106 5.106a.75.75 0 0 0-1.06 1.06l1.59 1.59a.75.75 0 1 0 1.06-1.06l-1.59-1.59Z" />
-                                                </svg>
+                                                    <Sun/>
                                             ) : (
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                                                    <path fillRule="evenodd" d="M9.528 1.718a.75.75 0 0 1 .484.904 9.75 9.75 0 0 0 5.927 9.713.75.75 0 0 1 1.05.06 8.25 8.25 0 0 1 1.17 1.17.75.75 0 0 1 .06 1.05 9.75 9.75 0 0 0 9.713 5.927.75.75 0 0 1 .904.484 2.25 2.25 0 0 0 2.143 1.173 2.25 2.25 0 0 0 2.143-1.173.75.75 0 0 1 .484-.904 9.75 9.75 0 0 0 5.927-9.713.75.75 0 0 1 .06-1.05 8.25 8.25 0 0 1 1.17-1.17.75.75 0 0 1 1.05-.06 9.75 9.75 0 0 0 9.713-5.927A.75.75 0 0 1 22.282 1.718a2.25 2.25 0 0 0-2.143-1.173 2.25 2.25 0 0 0-2.143 1.173Z" clipRule="evenodd" />
-                                                </svg>
+                                                <Moon/>
                                             )}
                                         </button>
                                         <button
                                             onClick={logout}
-                                            className="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition duration-300"
+                                            className="px-4 py-2 bg-red-500 text-white rounded-lg shadow-md cursor-pointer hover:bg-red-600 transition duration-300"
                                         >
                                             Logout
                                         </button>
