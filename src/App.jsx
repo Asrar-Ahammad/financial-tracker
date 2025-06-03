@@ -1161,7 +1161,7 @@ const App = () => {
                         <>
                             <header className="bg-white dark:bg-gray-800 p-4 shadow-lg mb-6 relative">
                                 <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
-                                    <h1 className="text-3xl font-extrabold text-indigo-700 dark:text-indigo-400 mb-4 sm:mb-0">FinTrack</h1>
+                                    <h1 className="text-3xl font-extrabold text-indigo-700 dark:text-indigo-400 mb-4 sm:mb-0">Spendroid</h1>
                                     <nav className="flex flex-wrap justify-center sm:justify-start space-x-2 sm:space-x-4">
                                         <button
                                             onClick={() => setSelectedTab('overview')}
